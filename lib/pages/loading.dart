@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
-import 'dart:convert';
+import 'package:worldclock/pages/world_time.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class Loading extends StatefulWidget {
   @override
@@ -8,21 +8,40 @@ class Loading extends StatefulWidget {
 }
 
 class _LoadingState extends State<Loading> {
-  void getData() async{
 
+//  String time='loading';
+
+  void getWorldTime() async{
+    WorldTime instance=WorldTime(location:'Kolkata',flag:'india.png',url:'Asia/Kolkata');
+    await instance.getData();
+    Navigator.pushReplacementNamed(context, '/home',arguments:{
+      'location':instance.location,
+      'flag':instance.flag,
+      'time':instance.time,
+      'isDay':instance.isDay,
+    });
+//    print(instance.time);
+//    setState(() {
+//      time=instance.time;
+//    });
   }
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    getData();
+    getWorldTime();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:Text('Loading!')
+      backgroundColor: Colors.deepOrange,
+      body:Center(
+        child: SpinKitRotatingCircle(
+          color: Colors.white,
+          size: 50.0,
+        ),
+      )
     );
   }
 }

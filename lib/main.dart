@@ -4,7 +4,7 @@ import 'package:worldclock/pages/choose_location.dart';
 import 'package:worldclock/pages/loading.dart';
 
 void main() => runApp(MaterialApp(
-  initialRoute: '/home',
+  initialRoute: '/',
   theme: ThemeData.dark(),
   routes: {
     '/':(context) => Loading(),
