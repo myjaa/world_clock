@@ -4,10 +4,10 @@ import 'package:intl/intl.dart';
 
 class WorldTime{
 
-  String location,time,flag,url;
+  String location,time,url;
   bool isDay;
 
-  WorldTime({this.location,this.flag,this.url});
+  WorldTime({this.location,this.url});
 
   Future<void> getData() async{
 
